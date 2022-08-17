@@ -14,7 +14,7 @@ namespace GitLesson4
             List<int> numbers = new List<int> { 1, 3, 23, 2313, 2342342, 2342342 };
             var t = numbers.Sum();
             var count = numbers.Count();
-            var c = numbers.Where(a => a % 2 == 0).Select(a=>$"{a}n zuyg a").ToList();
+            var c = numbers.Where(a => a % 2 == 0).Select(a => $"{a}n zuyg a").ToList();
 
             var myVar = LevelEnum.Low;
             switch (myVar)
@@ -30,22 +30,34 @@ namespace GitLesson4
                     break;
             }
 
-            Person person = new Person("Narek", "Danielyan", "12665");
+            Person person = new Person()
+            {
+                Name = "Narek",
+                Age = 20,
+                Id = "12665",
+                DateOfBirth = new DateTime(2001, 11, 06)
 
+            };
+         
             Company company = new Company()
             {
-                NumberOfworkers = 5,
                 Worker_position = PositionEnum.Manager,
                 Working_hours_st = 7.0,
                 Working_hours_end = 18.0,
-                Date = DateTime.Now,
-
+                CreateDate = DateTime.UtcNow,
+                Emploee = new List<Employer>()
+                {
+                    new Employer(),
+                    new Employer(),
+                    new Employer(),
+                }
 
             };
 
 
-            Console.WriteLine($"Firstname is {person.FirstName}");
-            Console.WriteLine($"Lastname is {person.LastName}");
+ 
+            Console.WriteLine($"Firstname is {person.Name}");
+            Console.WriteLine($"Age is {person.Age}");
             Console.WriteLine($"ID: {person.Id}");
 
             string[] companies = { "ALL", "Ger_mark", "Three_clean", "Germany_Wolswagen_Company" };
@@ -55,18 +67,17 @@ namespace GitLesson4
             {
                 Console.WriteLine($"Company is {com}");
             }
-            Console.WriteLine($"There are {company.NumberOfworkers} employees in this company");
+            Console.WriteLine($"There are {company.Emploee} employees in this company");
             Console.WriteLine($"Your position is {company.Worker_position}");
             Console.WriteLine($"Work start at {company.Working_hours_st} oclock");
             Console.WriteLine($"Work end at {company.Working_hours_end} oclock");
-            Console.WriteLine($"Datetime: {company.Date}");
+            Console.WriteLine($"Datetime: {company.CreateDate}");
         }
-
-      
 
 
     }
 
+    
     // public readonly record struct Point(double X,double Y,double Z);
 
 
